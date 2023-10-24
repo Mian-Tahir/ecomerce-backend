@@ -1,0 +1,14 @@
+{
+  "title": "glasses10",
+  "image": "img8",
+  "description": "this is glasses",
+  "price": 50 ,
+  "rating": 5 ,
+  "categoryID": [1]
+}
+{
+  "firstName": "user3",
+  "lastName": "3",
+  "email": "me152@s.com",
+  "phoneNumber": "18242"
+}
