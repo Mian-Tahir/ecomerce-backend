@@ -14,6 +14,7 @@ module.exports = {
     }
   },
   createUser: async (req, res) => {
+    
     const result = await userService.createUser(req.body);
     res.send(result);
   },

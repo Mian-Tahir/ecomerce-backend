@@ -1,4 +1,5 @@
 const { models } = require("../models");
+const bcrypt = require("bcrypt")
 
 module.exports = {
   getUsers: async () => {
@@ -13,20 +14,25 @@ module.exports = {
       return result;
     }
   },
-
-  createUser: async (data) => {
+   createUser :async (data) => {
+    const saltRounds = 10; // Specify the number of salt rounds for password hashing
+    data.password = bcrypt.hashSync(data.password, saltRounds); // Hash the password
+  
     const result = await models.user.create({
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
       phoneNumber: data.phoneNumber,
+      password: data.password,
     });
-    // default cart while creating user
+  
+    // Create a default cart while creating the user
     const cart = await models.cart.create({ userID: result.id });
-    result.setCart(cart);
+    await result.setCart(cart);
+  
     return result;
   },
-
+  
   updateUser: async (id, data) => {
     const result = await models.user.findByPk(id);
     if (!result) {
