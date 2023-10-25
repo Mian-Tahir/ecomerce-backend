@@ -11,6 +11,23 @@ module.exports = {
     const result = await models.cart.findOne({ where: { userID } });
     return result;
   },
+  getProductInCart: async (cartID) => {
+    const result = await models.ProductCart.findAll({
+      where: {
+        cartID,
+      },
+    });
+    if (!result) {
+      result.send("not found");
+    }
+    const productIDs = result.map((result) => result.productID);
+
+    const data = await models.product.findAll({
+      where: { id: productIDs },
+    });
+
+    return data;
+  },
   addProductToCart: async (userID, productID) => {
     const result = await models.cart.findOne({ where: { userID } });
     if (result) {

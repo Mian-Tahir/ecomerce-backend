@@ -1,3 +1,4 @@
+product:
 {
   "title": "glasses10",
   "image": "img8",
@@ -6,9 +7,15 @@
   "rating": 5 ,
   "categoryID": [1]
 }
+user:
 {
   "firstName": "user3",
   "lastName": "3",
   "email": "me152@s.com",
-  "phoneNumber": "18242"
+  "phoneNumber": "18242",
+  "password":"tahir123"
+}
+category:
+{
+  "type":["c1", "c2", "c3"]
 }

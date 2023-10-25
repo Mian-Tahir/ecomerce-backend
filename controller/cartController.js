@@ -15,6 +15,11 @@ module.exports = {
       res.status(404).json({ message: "Cart not found for this user" });
     }
   },
+  getProductInCart: async (req, res) => {
+    const cartID = req.params.cartID;
+    const result = await cartService.getProductInCart(cartID);
+    res.send(result);
+  },
   addProductToCart: async (req, res) => {
     const userID = req.params.userID;
     const productID = req.params.productID;
